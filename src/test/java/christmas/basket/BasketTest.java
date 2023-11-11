@@ -2,7 +2,7 @@ package christmas.basket;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import christmas.menu.Category;
 import java.util.List;
@@ -41,5 +41,11 @@ class BasketTest {
     void getTotalPrice_test() {
         Basket basket = new Basket(List.of("양송이수프-1", "티본스테이크-1"));
         assertThat(basket.getTotalPrice()).isEqualTo(61_000);
+    }
+
+    @Test
+    void isAllItemsOfCategory() {
+        Basket basket = new Basket(List.of("양송이수프-1", "타파스-1"));
+        assertTrue(basket.isAllItemsOfCategory(Category.APPETIZER));
     }
 }
