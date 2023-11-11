@@ -1,6 +1,7 @@
 package christmas.basket;
 
 import christmas.exception.ExceptionManager;
+import christmas.menu.Category;
 import christmas.menu.Menu;
 
 public class BasketItem {
@@ -14,6 +15,18 @@ public class BasketItem {
         this.count = count;
     }
 
+    public boolean isMenuNameEquals(String name) {
+        return this.menu.getName().equals(name);
+    }
+
+    public boolean isCategoryEquals(Category category) {
+        return this.menu.isEqualCategory(category);
+    }
+
+    public int getCount() {
+        return count;
+    }
+
     private void validate(String name, int count) {
         countValidate(count);
     }
@@ -22,9 +35,5 @@ public class BasketItem {
         if (count < 1) {
             throw ExceptionManager.ERROR_WRONG_ORDER.get();
         }
-    }
-
-    public boolean isMenuNameEquals(String name) {
-        return this.menu.getName().equals(name);
     }
 }

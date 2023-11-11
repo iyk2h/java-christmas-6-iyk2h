@@ -15,7 +15,7 @@ class MenuTest {
 
         assertAll(
                 () -> assertThat(menu.getName()).isEqualTo("양송이수프"),
-                () -> assertTrue(menu.isEqualCategory("에피타이저"))
+                () -> assertTrue(menu.isEqualCategory(Category.APPETIZER))
         );
 
     }

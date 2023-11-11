@@ -1,6 +1,7 @@
 package christmas.basket;
 
 import christmas.exception.ExceptionManager;
+import christmas.menu.Category;
 import christmas.menu.Menu;
 import christmas.util.Converter;
 import java.util.ArrayList;
@@ -46,5 +47,12 @@ public class Basket {
                 .ifPresent(item -> {
                     throw ExceptionManager.ERROR_WRONG_ORDER.get();
                 });
+    }
+
+    public int getTotalCountByCategory(Category category) {
+        return basket.stream()
+                .filter(basketItem -> basketItem.isCategoryEquals(category))
+                .mapToInt(BasketItem::getCount)
+                .sum();
     }
 }

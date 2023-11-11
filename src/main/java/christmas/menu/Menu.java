@@ -56,7 +56,7 @@ public enum Menu {
         return this.name.equals(name);
     }
 
-    public boolean isEqualCategory(String category) {
-        return this.category.isEquals(category);
+    public boolean isEqualCategory(Category category) {
+        return this.category.equals(category);
     }
 }
