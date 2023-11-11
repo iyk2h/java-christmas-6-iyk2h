@@ -1,0 +1,30 @@
+package christmas.basket;
+
+import christmas.exception.ExceptionManager;
+import christmas.menu.Menu;
+
+public class BasketItem {
+
+    private final Menu menu;
+    private final int count;
+
+    public BasketItem(String name, int count) {
+        validate(name, count);
+        this.menu = Menu.of(name);
+        this.count = count;
+    }
+
+    private void validate(String name, int count) {
+        countValidate(count);
+    }
+
+    private void countValidate(int count) {
+        if (count < 1) {
+            throw ExceptionManager.ERROR_WRONG_ORDER.get();
+        }
+    }
+
+    public boolean isMenuNameEquals(String name) {
+        return this.menu.getName().equals(name);
+    }
+}
