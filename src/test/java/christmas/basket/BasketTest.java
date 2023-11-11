@@ -36,4 +36,10 @@ class BasketTest {
         Basket basket = new Basket(List.of("양송이수프-1", "티본스테이크-1", "바비큐립-2"));
         assertThat(basket.getTotalCountByCategory(Category.MAIN)).isEqualTo(3);
     }
+
+    @Test
+    void getTotalPrice_test() {
+        Basket basket = new Basket(List.of("양송이수프-1", "티본스테이크-1"));
+        assertThat(basket.getTotalPrice()).isEqualTo(61_000);
+    }
 }

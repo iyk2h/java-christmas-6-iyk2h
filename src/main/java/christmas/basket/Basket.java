@@ -55,4 +55,10 @@ public class Basket {
                 .mapToInt(BasketItem::getCount)
                 .sum();
     }
+
+    public int getTotalPrice() {
+        return basket.stream()
+                .mapToInt(BasketItem::getTotalPrice)
+                .sum();
+    }
 }

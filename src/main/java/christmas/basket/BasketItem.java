@@ -27,6 +27,10 @@ public class BasketItem {
         return count;
     }
 
+    public int getTotalPrice() {
+        return menu.getPrice() * count;
+    }
+
     private void validate(String name, int count) {
         countValidate(count);
     }
