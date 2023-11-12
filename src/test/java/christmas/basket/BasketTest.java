@@ -48,4 +48,10 @@ class BasketTest {
         Basket basket = new Basket(List.of("양송이수프-1", "타파스-1"));
         assertTrue(basket.isAllItemsOfCategory(Category.APPETIZER));
     }
+
+    @Test
+    void isTotalCountUnder() {
+        Basket basket = new Basket(List.of("양송이수프-16", "티본스테이크-4"));
+        assertThat(basket.getTotalCount()).isEqualTo(20);
+    }
 }

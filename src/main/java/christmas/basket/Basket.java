@@ -31,6 +31,11 @@ public class Basket {
         return basket.stream()
                 .allMatch(basketItem -> basketItem.isCategoryEquals(category));
     }
+    public int getTotalCount() {
+        return basket.stream()
+                .mapToInt(BasketItem::getCount)
+                .sum();
+    }
 
     private List<BasketItem> inputBasket(List<String> menus) {
         List<BasketItem> baskets = new ArrayList<>();
