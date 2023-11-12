@@ -37,6 +37,14 @@ public class Basket {
                 .sum();
     }
 
+    public String getMenuNameAndCount() {
+        StringBuilder sb = new StringBuilder();
+        for (BasketItem basketItem : basket) {
+            sb.append(basketItem.getMenuNameAndCount()).append("\n");
+        }
+        return sb.toString();
+    }
+
     private List<BasketItem> inputBasket(List<String> menus) {
         List<BasketItem> baskets = new ArrayList<>();
         for (String menuInfo : menus) {

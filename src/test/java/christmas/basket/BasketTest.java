@@ -54,4 +54,10 @@ class BasketTest {
         Basket basket = new Basket(List.of("양송이수프-16", "티본스테이크-4"));
         assertThat(basket.getTotalCount()).isEqualTo(20);
     }
+
+    @Test
+    void getMenuNameAndCount() {
+        Basket basket = new Basket(List.of("양송이수프-16", "티본스테이크-4"));
+        System.out.println(basket.getMenuNameAndCount());
+    }
 }

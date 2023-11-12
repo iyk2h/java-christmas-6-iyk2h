@@ -29,5 +29,8 @@ public class Order {
         }
     }
 
+    public String getOrderMenuAndCount() {
+        return basket.getMenuNameAndCount();
+    }
 
 }
