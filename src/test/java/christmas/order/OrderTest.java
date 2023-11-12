@@ -28,4 +28,10 @@ class OrderTest {
         Order order = new Order(new Day(1), new Basket(List.of("양송이수프-1", "티본스테이크-1")));
         assertThat(order.getOrderMenuAndCount()).contains("양송이수프 1개\n티본스테이크 1개\n");
     }
+
+    @Test
+    void getTotalPrice() {
+        Order order = new Order(new Day(1), new Basket(List.of("양송이수프-1", "티본스테이크-1")));
+        assertThat(order.getTotalPrice()).isEqualTo(61_000);
+    }
 }

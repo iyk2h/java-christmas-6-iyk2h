@@ -33,4 +33,8 @@ public class Order {
         return basket.getMenuNameAndCount();
     }
 
+    public int getTotalPrice() {
+        return basket.getTotalPrice();
+    }
+
 }
