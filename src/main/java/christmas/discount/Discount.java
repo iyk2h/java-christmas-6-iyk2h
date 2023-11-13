@@ -9,10 +9,6 @@ import java.util.Map;
 
 public class Discount {
 
-    private final Order order;
-    private final Map<String, Integer> discountInfo;
-    private final Map<Menu, Integer> giftBasket;
-
     private static final int DISCOUNT_BASE_MIN_PRICE = 10_000;
     private static final int CHRISTMAS_DDAY_DISCOUNT_BASE = 900;
     private static final int CHRISTMAS_DDAY_DISCOUNT_PER_DAY = 100;
@@ -20,6 +16,10 @@ public class Discount {
     private static final int WEEKEND_DISCOUNT_PER_MAIN = 2_023;
     private static final int SPECIAL_DAY_DISCOUNT = 1_000;
     private static final int GIFT_EVENT_THRESHOLD = 120_000;
+
+    private final Order order;
+    private final Map<String, Integer> discountInfo;
+    private final Map<Menu, Integer> giftBasket;
 
     public Discount(Order order) {
         discountInfo = new LinkedHashMap<>();

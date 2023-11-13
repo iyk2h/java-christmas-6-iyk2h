@@ -1,7 +1,6 @@
 package christmas.view;
 
 import christmas.badge.Badge;
-import christmas.basket.BasketItem;
 import christmas.discount.Discount;
 import christmas.menu.Menu;
 import christmas.order.Order;

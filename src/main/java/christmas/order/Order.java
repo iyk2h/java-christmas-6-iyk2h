@@ -8,11 +8,11 @@ import java.util.List;
 
 public class Order {
 
-    private final Day day;
-    private final Basket basket;
-
     private static final int MIN_BASKET_SIZE = 1;
     private static final int MAX_BASKET_SIZE = 20;
+
+    private final Day day;
+    private final Basket basket;
 
     public Order(Day day, Basket basket) {
         checkBasketSize(basket);

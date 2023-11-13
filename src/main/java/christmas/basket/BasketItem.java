@@ -6,10 +6,10 @@ import christmas.menu.Menu;
 
 public class BasketItem {
 
+    private static final int MIN_COUNT = 1;
+
     private final Menu menu;
     private final int count;
-
-    private static final int MIN_COUNT = 1;
 
     public BasketItem(String name, int count) {
         validate(name, count);

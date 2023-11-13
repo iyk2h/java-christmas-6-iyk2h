@@ -4,10 +4,10 @@ import christmas.exception.ExceptionManager;
 
 public class Day {
 
-    private final int day;
-
     private static final int MIN_DAY = 1;
     private static final int MAX_DAY = 31;
+
+    private final int day;
 
     public Day(int day) {
         validate(day);
