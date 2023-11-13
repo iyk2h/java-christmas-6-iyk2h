@@ -1,8 +1,10 @@
 package christmas.view;
 
+import christmas.badge.Badge;
 import christmas.basket.Basket;
 import christmas.discount.Discount;
 import java.text.NumberFormat;
+import java.util.Map;
 
 public class OutputView {
 
@@ -34,5 +36,30 @@ public class OutputView {
         System.out.println(discount.getGiftBasket());
     }
 
+    public void displayDiscountInfo(Discount discount) {
+        System.out.println("<혜택 내역>");
 
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<String, Integer> entry : discount.getDiscountInfo().entrySet()) {
+            sb.append(entry.getKey()).append(": -").append(numberFormat.format(entry.getValue())).append("원\n");
+        }
+        System.out.println(sb);
+    }
+
+    public void displayTotalBenefit(Discount discount) {
+        System.out.println("<총혜택 금액>");
+        System.out.println(numberFormat.format(discount.getTotalBenefitPrice()));
+        System.out.println();
+    }
+
+    public void displayAfterDiscount(Discount discount) {
+        System.out.println("<할인 후 예상 결제 금액>");
+        System.out.println(numberFormat.format(discount.getAfterDiscount()));
+        System.out.println();
+    }
+
+    public void displayBadge(Badge badge) {
+        System.out.println("<12월 이벤트 배지>");
+        System.out.println(badge.getName());
+    }
 }
