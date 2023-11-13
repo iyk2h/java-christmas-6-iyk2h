@@ -22,7 +22,8 @@ public class Order {
     }
 
     private void checkBasketSize(Basket basket) {
-        if (basket.getTotalCount() >= 20) {
+        int totalCount = basket.getTotalCount();
+        if (totalCount >= 20 || totalCount <= 0) {
             throw ExceptionManager.ERROR_WRONG_ORDER.get();
         }
     }

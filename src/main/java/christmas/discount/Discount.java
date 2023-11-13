@@ -1,5 +1,6 @@
 package christmas.discount;
 
+import christmas.basket.BasketItem;
 import christmas.menu.Category;
 import christmas.menu.Menu;
 import christmas.order.Order;
@@ -20,8 +21,15 @@ public class Discount {
         discount();
     }
 
-    public Map<Menu, Integer> getGiftBasket() {
-        return giftBasket;
+    public String getGiftBasket() {
+        if (giftBasket.isEmpty()) {
+            return "없음";
+        }
+        StringBuilder sb = new StringBuilder();
+        for (Menu menu : giftBasket.keySet()) {
+            sb.append(menu.getName()).append(" ").append(giftBasket.get(menu)).append("개");
+        }
+        return sb.toString();
     }
 
     public Map<String, Integer> getDiscountInfo() {
