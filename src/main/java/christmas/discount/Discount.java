@@ -32,6 +32,7 @@ public class Discount {
         if (order.getTotalPrice() >= 10000) {
             applyChristmasDDayDiscount();
             applyWeekDiscount();
+            applySpecialDayDiscount();
         }
     }
 
@@ -48,5 +49,12 @@ public class Discount {
             return;
         }
         discountInfo.put("평일 할인", order.getCountOfCategory(Category.DESSERT) * 2023);
+    }
+
+    private void applySpecialDayDiscount() {
+        List<Integer> specialDay = List.of(3, 10, 17, 14, 15, 31);
+        if (specialDay.contains(order.getDay())) {
+            discountInfo.put("특별 할인", 1000);
+        }
     }
 }
