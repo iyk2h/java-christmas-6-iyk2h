@@ -33,6 +33,7 @@ public class Discount {
             applyChristmasDDayDiscount();
             applyWeekDiscount();
             applySpecialDayDiscount();
+            applyGetGift();
         }
     }
 
@@ -55,6 +56,14 @@ public class Discount {
         List<Integer> specialDay = List.of(3, 10, 17, 14, 15, 31);
         if (specialDay.contains(order.getDay())) {
             discountInfo.put("특별 할인", 1000);
+        }
+    }
+
+    private void applyGetGift() {
+        if (order.getTotalPrice() >= 120_000) {
+            Menu champagne = Menu.CHAMPAGNE;
+            discountInfo.put("증정 이벤트", champagne.getPrice());
+            giftBasket.put(champagne, 1);
         }
     }
 }
