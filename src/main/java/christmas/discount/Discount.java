@@ -28,6 +28,15 @@ public class Discount {
         return discountInfo;
     }
 
+    public int getAfterDiscount() {
+        int totalDiscount = discountInfo.keySet().stream()
+                .filter(key -> key.contains("증정 할인"))
+                .mapToInt(discountInfo::get)
+                .sum();
+
+        return order.getTotalPrice() - totalDiscount;
+    }
+
     private void discount() {
         if (order.getTotalPrice() >= 10000) {
             applyChristmasDDayDiscount();
