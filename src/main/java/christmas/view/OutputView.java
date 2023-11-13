@@ -2,8 +2,11 @@ package christmas.view;
 
 import christmas.basket.Basket;
 import christmas.discount.Discount;
+import java.text.NumberFormat;
 
 public class OutputView {
+
+    private final NumberFormat numberFormat = NumberFormat.getNumberInstance();
 
     public OutputView() {
     }
@@ -21,9 +24,15 @@ public class OutputView {
         System.out.println(basket.getMenuNameAndCount());
     }
 
+    public void displayBeforeDiscount(int price) {
+        System.out.println("<할인 전 총주문 금액>");
+        System.out.println(numberFormat.format(price) + "원");
+    }
+
     public void displayGiftList(Discount discount) {
         System.out.println("<증정 메뉴>");
         System.out.println(discount.getGiftBasket());
     }
+
 
 }
