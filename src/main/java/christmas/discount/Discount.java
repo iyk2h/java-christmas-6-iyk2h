@@ -38,7 +38,7 @@ public class Discount {
 
     public int getAfterDiscount() {
         int totalDiscount = discountInfo.keySet().stream()
-                .filter(key -> key.contains("증정 할인"))
+                .filter(key -> key.contains("할인"))
                 .mapToInt(discountInfo::get)
                 .sum();
 
