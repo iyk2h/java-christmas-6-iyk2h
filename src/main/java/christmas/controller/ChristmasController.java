@@ -9,12 +9,12 @@ import christmas.view.InputView;
 import christmas.view.OutputView;
 import java.util.function.Supplier;
 
-public class Controller {
+public class ChristmasController {
 
     private final InputView inputView;
     private final OutputView outputView;
 
-    public Controller(InputView inputView, OutputView outputView) {
+    public ChristmasController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
