@@ -17,15 +17,15 @@ public enum Badge {
         this.price = price;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public static Badge getBadgeByPrice(int price) {
         return Arrays.stream(values())
                 .filter(badge -> price >= badge.price)
                 .findFirst()
                 .orElse(NOPE);
+    }
+
+    public String getName() {
+        return name;
     }
 
 }

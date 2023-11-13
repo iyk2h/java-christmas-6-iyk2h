@@ -31,6 +31,7 @@ public class Basket {
         return basket.stream()
                 .allMatch(basketItem -> basketItem.isCategoryEquals(category));
     }
+
     public int getTotalCount() {
         return basket.stream()
                 .mapToInt(BasketItem::getCount)
@@ -77,4 +78,5 @@ public class Basket {
                     throw ExceptionManager.ERROR_WRONG_ORDER.get();
                 });
     }
+
 }

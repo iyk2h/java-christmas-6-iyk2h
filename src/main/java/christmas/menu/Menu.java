@@ -52,11 +52,11 @@ public enum Menu {
         return price;
     }
 
-    private boolean isEqualsName(String name) {
-        return this.name.equals(name);
-    }
-
     public boolean isEqualCategory(Category category) {
         return this.category.equals(category);
+    }
+
+    private boolean isEqualsName(String name) {
+        return this.name.equals(name);
     }
 }

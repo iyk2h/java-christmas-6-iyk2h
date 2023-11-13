@@ -32,7 +32,7 @@ public class BasketItem {
     }
 
     public String getMenuNameAndCount() {
-        return menu.getName()+" "+getCount()+"개";
+        return menu.getName() + " " + getCount() + "개";
     }
 
     private void validate(String name, int count) {
@@ -44,4 +44,5 @@ public class BasketItem {
             throw ExceptionManager.ERROR_WRONG_ORDER.get();
         }
     }
+
 }

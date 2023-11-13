@@ -1,7 +1,6 @@
 package christmas.view;
 
 import christmas.badge.Badge;
-import christmas.basket.Basket;
 import christmas.discount.Discount;
 import christmas.menu.Menu;
 import christmas.order.Order;
@@ -79,4 +78,5 @@ public class OutputView {
         System.out.println("<12월 이벤트 배지>");
         System.out.println(badge.getName());
     }
+
 }

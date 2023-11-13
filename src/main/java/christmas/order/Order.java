@@ -21,19 +21,6 @@ public class Order {
         return day.getDay();
     }
 
-    private void checkBasketSize(Basket basket) {
-        int totalCount = basket.getTotalCount();
-        if (totalCount >= 20 || totalCount <= 0) {
-            throw ExceptionManager.ERROR_WRONG_ORDER.get();
-        }
-    }
-
-    private void checkAllItemsOfCategory(Basket basket, Category category) {
-        if (basket.isAllItemsOfCategory(category)) {
-            throw ExceptionManager.ERROR_WRONG_ORDER.get();
-        }
-    }
-
     public int getCountOfCategory(Category category) {
         return basket.getTotalCountByCategory(category);
     }
@@ -48,6 +35,19 @@ public class Order {
 
     public boolean isDayLaterOrEqual(int day) {
         return this.day.isDayLaterOrEqual(day);
+    }
+
+    private void checkBasketSize(Basket basket) {
+        int totalCount = basket.getTotalCount();
+        if (totalCount >= 20 || totalCount <= 0) {
+            throw ExceptionManager.ERROR_WRONG_ORDER.get();
+        }
+    }
+
+    private void checkAllItemsOfCategory(Basket basket, Category category) {
+        if (basket.isAllItemsOfCategory(category)) {
+            throw ExceptionManager.ERROR_WRONG_ORDER.get();
+        }
     }
 
 }

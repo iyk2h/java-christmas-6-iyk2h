@@ -12,5 +12,6 @@ public enum Category {
     Category(String name) {
         this.name = name;
     }
+
 }
 

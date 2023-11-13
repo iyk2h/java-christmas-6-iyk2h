@@ -1,8 +1,7 @@
 package christmas.util;
 
-import christmas.exception.ExceptionManager;
-
 public class Converter {
+
     public static int convertToInt(String input, IllegalArgumentException exception) {
         try {
             return Integer.parseInt(input);
@@ -10,4 +9,5 @@ public class Converter {
             throw exception;
         }
     }
+
 }

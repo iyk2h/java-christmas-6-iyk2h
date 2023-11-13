@@ -13,4 +13,5 @@ public class Application {
         ChristmasController christmasController = new ChristmasController(inputView, outputView);
         christmasController.run();
     }
+
 }

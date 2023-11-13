@@ -24,7 +24,18 @@ public class ChristmasController {
         Day day = repeat(this::getDay);
         Order order = repeat(() -> this.inputOrder(day));
         outputDiscountInfo(order);
+    }
 
+    private Day getDay() {
+        return new Day(inputView.inputDay());
+    }
+
+    private Order inputOrder(Day day) {
+        return new Order(day, getBasket());
+    }
+
+    private Basket getBasket() {
+        return new Basket(inputView.inputMenuAndCount());
     }
 
     private void outputDiscountInfo(Order order) {
@@ -37,18 +48,6 @@ public class ChristmasController {
         outputView.displayTotalBenefit(discount);
         outputView.displayAfterDiscount(discount);
         outputView.displayBadge(Badge.getBadgeByPrice(discount.getTotalBenefitPrice()));
-    }
-
-    private Order inputOrder(Day day) {
-        return  new Order(day, getBasket());
-    }
-
-    private Day getDay() {
-        return new Day(inputView.inputDay());
-    }
-
-    private Basket getBasket() {
-        return new Basket(inputView.inputMenuAndCount());
     }
 
     private <T> T repeat(Supplier<T> input) {

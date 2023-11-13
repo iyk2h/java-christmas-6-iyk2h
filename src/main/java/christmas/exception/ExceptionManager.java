@@ -19,4 +19,5 @@ public enum ExceptionManager {
     public IllegalArgumentException getWithMsg(String detailMsg) {
         return new IllegalArgumentException(BEGIN_MSG + msg + detailMsg);
     }
+
 }

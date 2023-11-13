@@ -24,4 +24,5 @@ public class Day {
             throw ExceptionManager.ERROR_WRONG_DAY.get();
         }
     }
+
 }
