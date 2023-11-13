@@ -31,8 +31,8 @@ public class BasketItem {
         return menu.getPrice() * count;
     }
 
-    public String getMenuNameAndCount() {
-        return menu.getName() + " " + getCount() + "개";
+    public String getMenuName() {
+        return menu.getName();
     }
 
     private void validate(String name, int count) {

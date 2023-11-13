@@ -1,6 +1,7 @@
 package christmas.view;
 
 import christmas.badge.Badge;
+import christmas.basket.BasketItem;
 import christmas.discount.Discount;
 import christmas.menu.Menu;
 import christmas.order.Order;
@@ -25,7 +26,12 @@ public class OutputView {
 
     public void displayOrderMenuAndCount(Order order) {
         System.out.println("<주문 메뉴>");
-        System.out.println(order.getOrderMenuAndCount());
+        String result = order.getOrderMenuAndCount().stream()
+                .map(basketItem -> basketItem.getMenuName() + " " + basketItem.getCount() + "개")
+                .collect(Collectors.joining("\n"));
+
+        System.out.println(result);
+        System.out.println();
     }
 
     public void displayBeforeDiscount(int price) {
@@ -38,7 +44,7 @@ public class OutputView {
         System.out.println("<증정 메뉴>");
         Map<Menu, Integer> giftBasket = discount.getGiftBasket();
         if (giftBasket.isEmpty()) {
-            System.out.println("없음");
+            System.out.println("없음\n");
             return;
         }
         String result = giftBasket.entrySet().stream()
@@ -59,6 +65,7 @@ public class OutputView {
                 .map(entry -> entry.getKey() + ": " + numberFormat.format(-entry.getValue()) + "원")
                 .collect(Collectors.joining("\n"));
         System.out.println(result);
+        System.out.println();
     }
 
     public void displayTotalBenefit(Discount discount) {

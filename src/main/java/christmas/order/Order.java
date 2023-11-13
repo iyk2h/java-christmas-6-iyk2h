@@ -1,8 +1,10 @@
 package christmas.order;
 
 import christmas.basket.Basket;
+import christmas.basket.BasketItem;
 import christmas.exception.ExceptionManager;
 import christmas.menu.Category;
+import java.util.List;
 
 public class Order {
 
@@ -25,7 +27,7 @@ public class Order {
         return basket.getTotalCountByCategory(category);
     }
 
-    public String getOrderMenuAndCount() {
+    public List<BasketItem> getOrderMenuAndCount() {
         return basket.getMenuNameAndCount();
     }
 
