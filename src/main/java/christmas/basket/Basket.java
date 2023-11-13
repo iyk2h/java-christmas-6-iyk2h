@@ -50,7 +50,7 @@ public class Basket {
         for (String menuInfo : menus) {
             String[] split = getSplit(menuInfo);
             String name = split[0];
-            int count = Converter.convertToInt(split[1]);
+            int count = Converter.convertToInt(split[1], ExceptionManager.ERROR_WRONG_ORDER.get());
             BasketItem basketItem = new BasketItem(split[0], count);
             checkDuplicate(baskets, name);
             baskets.add(basketItem);

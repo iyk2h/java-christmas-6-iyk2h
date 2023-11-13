@@ -21,7 +21,7 @@ public class Day {
 
     private void validate(int day) {
         if (day < 1 || day > 31) {
-            throw ExceptionManager.ERROR_MSG_PREFIX.getWithMsg("유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+            throw ExceptionManager.ERROR_WRONG_DAY.get();
         }
     }
 }
