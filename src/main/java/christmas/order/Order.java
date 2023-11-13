@@ -11,6 +11,9 @@ public class Order {
     private final Day day;
     private final Basket basket;
 
+    private static final int MIN_BASKET_SIZE = 1;
+    private static final int MAX_BASKET_SIZE = 20;
+
     public Order(Day day, Basket basket) {
         checkBasketSize(basket);
         checkAllItemsOfCategory(basket, Category.BEVERAGE);
@@ -41,7 +44,7 @@ public class Order {
 
     private void checkBasketSize(Basket basket) {
         int totalCount = basket.getTotalCount();
-        if (totalCount >= 20 || totalCount <= 0) {
+        if (totalCount < MIN_BASKET_SIZE || totalCount >= MAX_BASKET_SIZE) {
             throw ExceptionManager.ERROR_WRONG_ORDER.get();
         }
     }

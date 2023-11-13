@@ -9,6 +9,8 @@ public class BasketItem {
     private final Menu menu;
     private final int count;
 
+    private static final int MIN_COUNT = 1;
+
     public BasketItem(String name, int count) {
         validate(name, count);
         this.menu = Menu.of(name);
@@ -40,7 +42,7 @@ public class BasketItem {
     }
 
     private void countValidate(int count) {
-        if (count < 1) {
+        if (count < MIN_COUNT) {
             throw ExceptionManager.ERROR_WRONG_ORDER.get();
         }
     }

@@ -6,6 +6,9 @@ public class Day {
 
     private final int day;
 
+    private static final int MIN_DAY = 1;
+    private static final int MAX_DAY = 31;
+
     public Day(int day) {
         validate(day);
         this.day = day;
@@ -20,7 +23,7 @@ public class Day {
     }
 
     private void validate(int day) {
-        if (day < 1 || day > 31) {
+        if (day < MIN_DAY || day > MAX_DAY) {
             throw ExceptionManager.ERROR_WRONG_DAY.get();
         }
     }
