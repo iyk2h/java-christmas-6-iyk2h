@@ -1,12 +1,12 @@
 package christmas.discount;
 
-import christmas.basket.BasketItem;
 import christmas.menu.Category;
 import christmas.menu.Menu;
 import christmas.order.Order;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Discount {
 
@@ -25,11 +25,9 @@ public class Discount {
         if (giftBasket.isEmpty()) {
             return "없음";
         }
-        StringBuilder sb = new StringBuilder();
-        for (Menu menu : giftBasket.keySet()) {
-            sb.append(menu.getName()).append(" ").append(giftBasket.get(menu)).append("개");
-        }
-        return sb.toString();
+        return giftBasket.entrySet().stream()
+                .map(entry -> entry.getKey().getName() + " " + entry.getValue() + "개")
+                .collect(Collectors.joining());
     }
 
     public Map<String, Integer> getDiscountInfo() {
