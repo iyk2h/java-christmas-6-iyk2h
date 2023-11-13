@@ -1,8 +1,10 @@
 package christmas.discount;
 
+import christmas.menu.Category;
 import christmas.menu.Menu;
 import christmas.order.Order;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Discount {
@@ -29,6 +31,7 @@ public class Discount {
     private void discount() {
         if (order.getTotalPrice() >= 10000) {
             applyChristmasDDayDiscount();
+            applyWeekDiscount();
         }
     }
 
@@ -38,4 +41,12 @@ public class Discount {
         }
     }
 
+    private void applyWeekDiscount() {
+        List<Integer> weekEnd = List.of(1, 2, 8, 9, 15, 16, 22, 23, 29, 30);
+        if (weekEnd.contains(order.getDay())) {
+            discountInfo.put("주말 할인", order.getCountOfCategory(Category.MAIN) * 2023);
+            return;
+        }
+        discountInfo.put("평일 할인", order.getCountOfCategory(Category.DESSERT) * 2023);
+    }
 }

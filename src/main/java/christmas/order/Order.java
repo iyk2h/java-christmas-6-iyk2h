@@ -17,6 +17,10 @@ public class Order {
         this.basket = basket;
     }
 
+    public int getDay() {
+        return day.getDay();
+    }
+
     private void checkBasketSize(Basket basket) {
         if (basket.getTotalCount() >= 20) {
             throw ExceptionManager.ERROR_WRONG_ORDER.get();
@@ -29,12 +33,20 @@ public class Order {
         }
     }
 
+    public int getCountOfCategory(Category category) {
+        return basket.getTotalCountByCategory(category);
+    }
+
     public String getOrderMenuAndCount() {
         return basket.getMenuNameAndCount();
     }
 
     public int getTotalPrice() {
         return basket.getTotalPrice();
+    }
+
+    public boolean isDayLaterOrEqual(int day) {
+        return this.day.isDayLaterOrEqual(day);
     }
 
 }
