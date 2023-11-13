@@ -21,13 +21,8 @@ public class Discount {
         discount();
     }
 
-    public String getGiftBasket() {
-        if (giftBasket.isEmpty()) {
-            return "없음";
-        }
-        return giftBasket.entrySet().stream()
-                .map(entry -> entry.getKey().getName() + " " + entry.getValue() + "개")
-                .collect(Collectors.joining());
+    public Map<Menu, Integer> getGiftBasket() {
+        return giftBasket;
     }
 
     public Map<String, Integer> getDiscountInfo() {

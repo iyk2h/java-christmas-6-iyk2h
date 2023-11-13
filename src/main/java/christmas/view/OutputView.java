@@ -3,6 +3,7 @@ package christmas.view;
 import christmas.badge.Badge;
 import christmas.basket.Basket;
 import christmas.discount.Discount;
+import christmas.menu.Menu;
 import christmas.order.Order;
 import java.text.NumberFormat;
 import java.util.Map;
@@ -36,7 +37,15 @@ public class OutputView {
 
     public void displayGiftList(Discount discount) {
         System.out.println("<증정 메뉴>");
-        System.out.println(discount.getGiftBasket());
+        Map<Menu, Integer> giftBasket = discount.getGiftBasket();
+        if (giftBasket.isEmpty()) {
+            System.out.println("없음");
+            return;
+        }
+        String result = giftBasket.entrySet().stream()
+                .map(entry -> entry.getKey().getName() + " " + entry.getValue() + "개")
+                .collect(Collectors.joining());
+        System.out.println(result);
         System.out.println();
     }
 

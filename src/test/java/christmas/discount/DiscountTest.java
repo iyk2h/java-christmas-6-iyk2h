@@ -19,7 +19,7 @@ class DiscountTest {
         assertAll(
                 () -> assertThat(discount.getDiscountInfo().toString()).isEqualTo(
                         "{크리스마스 디데이 할인=1200, 평일 할인=4046, 특별 할인=1000, 증정 이벤트=25000}"),
-                () -> assertThat(discount.getGiftBasket().toString()).isEqualTo("샴페인 1개"),
+                () -> assertThat(discount.getGiftBasket().toString()).contains("CHAMPAGNE"),
                 () -> assertThat(discount.getAfterDiscount()).isEqualTo(135754),
                 () -> assertThat(discount.getTotalBenefitPrice()).isEqualTo(31246)
         );
