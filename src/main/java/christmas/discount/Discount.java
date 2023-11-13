@@ -37,6 +37,12 @@ public class Discount {
         return order.getTotalPrice() - totalDiscount;
     }
 
+    public int getTotalBenefitPrice() {
+        return discountInfo.values().stream()
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
+
     private void discount() {
         if (order.getTotalPrice() >= 10000) {
             applyChristmasDDayDiscount();
