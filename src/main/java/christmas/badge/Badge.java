@@ -1,5 +1,7 @@
 package christmas.badge;
 
+import java.util.Arrays;
+
 public enum Badge {
 
     SANTA("산타", 20000),
@@ -20,12 +22,10 @@ public enum Badge {
     }
 
     public static Badge getBadgeByPrice(int price) {
-        for (Badge badge : values()) {
-            if (price >= badge.price) {
-                return badge;
-            }
-        }
-        return NOPE;
+        return Arrays.stream(values())
+                .filter(badge -> price >= badge.price)
+                .findFirst()
+                .orElse(NOPE);
     }
 
 }

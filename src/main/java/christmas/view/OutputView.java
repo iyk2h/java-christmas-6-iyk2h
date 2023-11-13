@@ -6,6 +6,7 @@ import christmas.discount.Discount;
 import christmas.order.Order;
 import java.text.NumberFormat;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class OutputView {
 
@@ -46,17 +47,16 @@ public class OutputView {
             System.out.println("없음\n");
             return;
         }
-        StringBuilder sb = new StringBuilder();
-        for (Map.Entry<String, Integer> entry : discountInfo.entrySet()) {
-            sb.append(entry.getKey()).append(": -").append(numberFormat.format(entry.getValue()))
-                    .append("원\n");
-        }
-        System.out.println(sb);
+        String result = discountInfo.entrySet().stream()
+                .map(entry -> entry.getKey() + ": " + numberFormat.format(-entry.getValue()) + "원")
+                .collect(Collectors.joining("\n"));
+        System.out.println(result);
     }
 
     public void displayTotalBenefit(Discount discount) {
         System.out.println("<총혜택 금액>");
-        System.out.println("-" + numberFormat.format(discount.getTotalBenefitPrice()) + "원");
+        int totalBenefitPrice = discount.getTotalBenefitPrice() * -1;
+        System.out.println(numberFormat.format(totalBenefitPrice) + "원");
         System.out.println();
     }
 

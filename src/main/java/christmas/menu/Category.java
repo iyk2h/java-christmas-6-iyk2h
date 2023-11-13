@@ -12,9 +12,5 @@ public enum Category {
     Category(String name) {
         this.name = name;
     }
-
-    public boolean isEquals(String category) {
-        return this.name.equals(category);
-    }
 }
 
