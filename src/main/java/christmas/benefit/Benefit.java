@@ -25,7 +25,7 @@ public class Benefit {
         giftInfos = new GiftFactory(this.order).get();
     }
 
-    public List<GiftInfo> getGiftBasket() {
+    public List<GiftInfo> getGiftInfos() {
         return Collections.unmodifiableList(giftInfos);
     }
 

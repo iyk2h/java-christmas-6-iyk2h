@@ -42,7 +42,7 @@ public class OutputView {
 
     public void displayGiftList(Benefit benefit) {
         System.out.println("<증정 메뉴>");
-        List<GiftInfo> giftInfos = benefit.getGiftBasket();
+        List<GiftInfo> giftInfos = benefit.getGiftInfos();
         if (giftInfos.isEmpty()) {
             System.out.println("없음\n");
             return;
