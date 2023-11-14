@@ -3,6 +3,7 @@ package christmas.discount;
 import christmas.menu.Category;
 import christmas.menu.Menu;
 import christmas.order.Order;
+import java.util.Collections;
 import java.util.EnumMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -30,11 +31,11 @@ public class Discount {
     }
 
     public Map<Menu, Integer> getGiftBasket() {
-        return giftBasket;
+        return Collections.unmodifiableMap(giftBasket);
     }
 
     public Map<String, Integer> getDiscountInfo() {
-        return discountInfo;
+        return Collections.unmodifiableMap(discountInfo);
     }
 
     public int getAfterDiscount() {

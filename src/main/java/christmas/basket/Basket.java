@@ -4,6 +4,7 @@ import christmas.exception.ExceptionManager;
 import christmas.menu.Category;
 import christmas.util.Converter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Basket {
@@ -11,7 +12,7 @@ public class Basket {
     private final List<BasketItem> basket;
 
     public Basket(List<String> inputs) {
-        this.basket = inputBasket(inputs);
+        this.basket = new ArrayList<>(inputBasket(inputs));
     }
 
     public int getTotalPrice() {
@@ -39,7 +40,7 @@ public class Basket {
     }
 
     public List<BasketItem> getMenuNameAndCount() {
-        return basket;
+        return Collections.unmodifiableList(basket);
     }
 
     private List<BasketItem> inputBasket(List<String> menus) {
