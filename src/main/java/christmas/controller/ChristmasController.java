@@ -23,7 +23,8 @@ public class ChristmasController {
         outputView.displayStartPlanerMsg();
         Day day = repeat(this::getDay);
         Order order = repeat(() -> this.inputOrder(day));
-        outputDiscountInfo(order);
+        outputOrderInfo(order);
+        outputDiscountInfo(new Discount(order));
     }
 
     private Day getDay() {
@@ -38,11 +39,13 @@ public class ChristmasController {
         return new Basket(inputView.inputMenuAndCount());
     }
 
-    private void outputDiscountInfo(Order order) {
-        Discount discount = new Discount(order);
+    private void outputOrderInfo(Order order) {
         outputView.displayEventBenefit(order.getDay());
         outputView.displayOrderMenuAndCount(order);
         outputView.displayBeforeDiscount(order.getTotalPrice());
+    }
+
+    private void outputDiscountInfo(Discount discount) {
         outputView.displayGiftList(discount);
         outputView.displayDiscountInfo(discount);
         outputView.displayTotalBenefit(discount);
