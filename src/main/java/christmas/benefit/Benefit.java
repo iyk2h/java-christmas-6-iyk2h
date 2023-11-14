@@ -1,4 +1,4 @@
-package christmas.discount;
+package christmas.benefit;
 
 import christmas.menu.Category;
 import christmas.menu.Menu;
@@ -9,7 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Discount {
+public class Benefit {
 
     private static final int DISCOUNT_BASE_MIN_PRICE = 10_000;
     private static final int CHRISTMAS_DDAY_DISCOUNT_BASE = 900;
@@ -23,7 +23,7 @@ public class Discount {
     private final Map<String, Integer> discountInfo;
     private final EnumMap<Menu, Integer> giftBasket;
 
-    public Discount(Order order) {
+    public Benefit(Order order) {
         discountInfo = new LinkedHashMap<>();
         giftBasket = new EnumMap<>(Menu.class);
         this.order = order;

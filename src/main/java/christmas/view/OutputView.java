@@ -1,7 +1,7 @@
 package christmas.view;
 
 import christmas.badge.Badge;
-import christmas.discount.Discount;
+import christmas.benefit.Benefit;
 import christmas.menu.Menu;
 import christmas.order.Order;
 import java.text.NumberFormat;
@@ -39,9 +39,9 @@ public class OutputView {
         System.out.println();
     }
 
-    public void displayGiftList(Discount discount) {
+    public void displayGiftList(Benefit benefit) {
         System.out.println("<증정 메뉴>");
-        Map<Menu, Integer> giftBasket = discount.getGiftBasket();
+        Map<Menu, Integer> giftBasket = benefit.getGiftBasket();
         if (giftBasket.isEmpty()) {
             System.out.println("없음\n");
             return;
@@ -53,9 +53,9 @@ public class OutputView {
         System.out.println();
     }
 
-    public void displayDiscountInfo(Discount discount) {
+    public void displayDiscountInfo(Benefit benefit) {
         System.out.println("<혜택 내역>");
-        Map<String, Integer> discountInfo = discount.getDiscountInfo();
+        Map<String, Integer> discountInfo = benefit.getDiscountInfo();
         if (discountInfo.isEmpty()) {
             System.out.println("없음\n");
             return;
@@ -67,16 +67,16 @@ public class OutputView {
         System.out.println();
     }
 
-    public void displayTotalBenefit(Discount discount) {
+    public void displayTotalBenefit(Benefit benefit) {
         System.out.println("<총혜택 금액>");
-        int totalBenefitPrice = discount.getTotalBenefitPrice() * -1;
+        int totalBenefitPrice = benefit.getTotalBenefitPrice() * -1;
         System.out.println(numberFormat.format(totalBenefitPrice) + "원");
         System.out.println();
     }
 
-    public void displayAfterDiscount(Discount discount) {
+    public void displayAfterDiscount(Benefit benefit) {
         System.out.println("<할인 후 예상 결제 금액>");
-        System.out.println(numberFormat.format(discount.getAfterDiscount()) + "원");
+        System.out.println(numberFormat.format(benefit.getAfterDiscount()) + "원");
         System.out.println();
     }
 

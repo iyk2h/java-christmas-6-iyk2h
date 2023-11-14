@@ -2,7 +2,7 @@ package christmas.controller;
 
 import christmas.badge.Badge;
 import christmas.basket.Basket;
-import christmas.discount.Discount;
+import christmas.benefit.Benefit;
 import christmas.order.Day;
 import christmas.order.Order;
 import christmas.view.InputView;
@@ -24,7 +24,7 @@ public class ChristmasController {
         Day day = repeat(this::getDay);
         Order order = repeat(() -> this.inputOrder(day));
         outputOrderInfo(order);
-        outputDiscountInfo(new Discount(order));
+        outputDiscountInfo(new Benefit(order));
     }
 
     private Day getDay() {
@@ -45,12 +45,12 @@ public class ChristmasController {
         outputView.displayBeforeDiscount(order.getTotalPrice());
     }
 
-    private void outputDiscountInfo(Discount discount) {
-        outputView.displayGiftList(discount);
-        outputView.displayDiscountInfo(discount);
-        outputView.displayTotalBenefit(discount);
-        outputView.displayAfterDiscount(discount);
-        outputView.displayBadge(Badge.getBadgeByPrice(discount.getTotalBenefitPrice()));
+    private void outputDiscountInfo(Benefit benefit) {
+        outputView.displayGiftList(benefit);
+        outputView.displayDiscountInfo(benefit);
+        outputView.displayTotalBenefit(benefit);
+        outputView.displayAfterDiscount(benefit);
+        outputView.displayBadge(Badge.getBadgeByPrice(benefit.getTotalBenefitPrice()));
     }
 
     private <T> T repeat(Supplier<T> input) {
