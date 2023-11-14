@@ -1,7 +1,9 @@
 package christmas.benefit;
 
+import christmas.discount.DiscountCalculator;
 import christmas.discount.DiscountFactory;
 import christmas.discount.DiscountInfo;
+import christmas.gift.GiftCalculator;
 import christmas.gift.GiftFactory;
 import christmas.gift.GiftInfo;
 import christmas.order.Order;
@@ -16,13 +18,11 @@ public class Benefit {
     private final Order order;
     private final List<DiscountInfo> discountInfos;
     private final List<GiftInfo> giftInfos;
-    private final Map<String, Integer> benefitInfo;
 
     public Benefit(Order order) {
         this.order = order;
         discountInfos = new DiscountFactory(this.order).get();
         giftInfos = new GiftFactory(this.order).get();
-        benefitInfo = new LinkedHashMap<>();
     }
 
     public List<GiftInfo> getGiftBasket() {
@@ -30,38 +30,27 @@ public class Benefit {
     }
 
     public Map<String, Integer> getBenefitInfo() {
-        getDiscountInfo();
-        getGiftInfo();
+        DiscountCalculator discountCalculator = new DiscountCalculator(discountInfos);
+        GiftCalculator giftCalculator = new GiftCalculator(giftInfos);
+
+        Map<String, Integer> benefitInfo = new LinkedHashMap<>();
+        benefitInfo.putAll(discountCalculator.calculateDiscountInfo());
+        benefitInfo.putAll(giftCalculator.calculateGiftInfo());
 
         return Collections.unmodifiableMap(benefitInfo);
     }
 
-    private void getDiscountInfo() {
-        for (DiscountInfo discountInfo : discountInfos) {
-            benefitInfo.put(discountInfo.getDiscountName(), discountInfo.getDiscountAmount());
-        }
-    }
-
-    private void getGiftInfo() {
-        if (!giftInfos.isEmpty()) {
-            benefitInfo.put("증정 이벤트", getTotalOnlyGiftAmount());
-        }
-    }
-
     public int getAfterDiscount() {
-        return order.getTotalPrice() - getTotalOnlyDiscount();
+        DiscountCalculator discountCalculator = new DiscountCalculator(discountInfos);
+        return order.getTotalPrice() - discountCalculator.calculateTotalDiscount();
     }
 
     public int getTotalBenefitPrice() {
-        return getTotalOnlyDiscount() + getTotalOnlyGiftAmount();
-    }
+        DiscountCalculator discountCalculator = new DiscountCalculator(discountInfos);
+        GiftCalculator giftCalculator = new GiftCalculator(giftInfos);
 
-    private int getTotalOnlyDiscount() {
-        return discountInfos.stream().mapToInt(DiscountInfo::getDiscountAmount).sum();
-    }
-
-    private int getTotalOnlyGiftAmount() {
-        return giftInfos.stream().mapToInt(GiftInfo::getMenuPrice).sum();
+        return discountCalculator.calculateTotalDiscount()
+                + giftCalculator.calculateTotalGiftAmount();
     }
 
 }
