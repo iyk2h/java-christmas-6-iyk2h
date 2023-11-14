@@ -39,17 +39,19 @@ public class Discount {
     }
 
     public int getAfterDiscount() {
-        int totalDiscount = discountInfo.keySet().stream()
-                .filter(key -> key.contains("할인"))
-                .mapToInt(discountInfo::get)
-                .sum();
-
-        return order.getTotalPrice() - totalDiscount;
+        return order.getTotalPrice() - getTotalOnlyDiscount();
     }
 
     public int getTotalBenefitPrice() {
         return discountInfo.values().stream()
                 .mapToInt(Integer::intValue)
+                .sum();
+    }
+
+    private int getTotalOnlyDiscount() {
+        return discountInfo.keySet().stream()
+                .filter(key -> key.contains("할인"))
+                .mapToInt(discountInfo::get)
                 .sum();
     }
 
