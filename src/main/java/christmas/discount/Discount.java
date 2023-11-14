@@ -3,6 +3,7 @@ package christmas.discount;
 import christmas.menu.Category;
 import christmas.menu.Menu;
 import christmas.order.Order;
+import java.util.EnumMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,11 +20,11 @@ public class Discount {
 
     private final Order order;
     private final Map<String, Integer> discountInfo;
-    private final Map<Menu, Integer> giftBasket;
+    private final EnumMap<Menu, Integer> giftBasket;
 
     public Discount(Order order) {
         discountInfo = new LinkedHashMap<>();
-        giftBasket = new LinkedHashMap<>();
+        giftBasket = new EnumMap<>(Menu.class);
         this.order = order;
         discount();
     }
