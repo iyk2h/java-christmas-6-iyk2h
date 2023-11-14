@@ -81,14 +81,14 @@ Day와 Menus를 입력받아 주문 정보를 관리한다.
 
 discount 목록과 gift 목록을 관리하는 객체
 
-- [ ] discount 목록을 discountFactory로 생성
-- [ ] gift 목록을 giftFactory로 생성
-- [ ] gift 목록 반환
-- [ ] 혜택 목록 반환
-- [ ] 할인 총 금액 계산
-- [ ] 선물 총 금액 계산
-- [ ] benefit 총 금액 계산
-- [ ] 할인 이후 금액 계산
+- [x] discount 목록을 discountFactory로 생성
+- [x] gift 목록을 giftFactory로 생성
+- [x] gift 목록 반환
+- [x] 혜택 목록 반환
+- [x] 할인 총 금액 계산
+- [x] 선물 총 금액 계산
+- [x] benefit 총 금액 계산
+- [x] 할인 이후 금액 계산
 
 
 

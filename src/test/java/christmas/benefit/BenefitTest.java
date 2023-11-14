@@ -17,9 +17,9 @@ class BenefitTest {
                 new Basket(List.of("티본스테이크-1", "바비큐립-1", "초코케이크-2", "제로콜라-1"))));
 
         assertAll(
-                () -> assertThat(benefit.getDiscountInfo().toString()).isEqualTo(
+                () -> assertThat(benefit.getBenefitInfo().toString()).isEqualTo(
                         "{크리스마스 디데이 할인=1200, 평일 할인=4046, 특별 할인=1000, 증정 이벤트=25000}"),
-                () -> assertThat(benefit.getGiftBasket().toString()).contains("CHAMPAGNE"),
+                () -> assertThat(benefit.getGiftBasket().get(0).getMenuName()).isEqualTo("샴페인"),
                 () -> assertThat(benefit.getAfterDiscount()).isEqualTo(135754),
                 () -> assertThat(benefit.getTotalBenefitPrice()).isEqualTo(31246)
         );

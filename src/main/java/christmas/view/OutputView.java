@@ -2,9 +2,10 @@ package christmas.view;
 
 import christmas.badge.Badge;
 import christmas.benefit.Benefit;
-import christmas.menu.Menu;
+import christmas.gift.GiftInfo;
 import christmas.order.Order;
 import java.text.NumberFormat;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -41,13 +42,13 @@ public class OutputView {
 
     public void displayGiftList(Benefit benefit) {
         System.out.println("<증정 메뉴>");
-        Map<Menu, Integer> giftBasket = benefit.getGiftBasket();
-        if (giftBasket.isEmpty()) {
+        List<GiftInfo> giftInfos = benefit.getGiftBasket();
+        if (giftInfos.isEmpty()) {
             System.out.println("없음\n");
             return;
         }
-        String result = giftBasket.entrySet().stream()
-                .map(entry -> entry.getKey().getName() + " " + entry.getValue() + "개")
+        String result = giftInfos.stream()
+                .map(giftInfo -> giftInfo.getMenuName() + " " + giftInfo.getCount() + "개")
                 .collect(Collectors.joining());
         System.out.println(result);
         System.out.println();
@@ -55,7 +56,7 @@ public class OutputView {
 
     public void displayDiscountInfo(Benefit benefit) {
         System.out.println("<혜택 내역>");
-        Map<String, Integer> discountInfo = benefit.getDiscountInfo();
+        Map<String, Integer> discountInfo = benefit.getBenefitInfo();
         if (discountInfo.isEmpty()) {
             System.out.println("없음\n");
             return;
