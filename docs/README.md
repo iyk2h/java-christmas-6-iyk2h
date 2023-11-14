@@ -1,23 +1,3 @@
-## Class Diagram
-
-### 전체 구조
-
-![image-20231114222302664](./images/image-20231114222302664.png)
-
-
-
-### Order 구조
-
-<img src="./images/image-20231114222434918.png" alt="image-20231114222434918" style="zoom:50%;" />
-
-
-
-### Benefit 구조
-
-![image-20231114222522636](./images/image-20231114222522636.png)
-
-
-
 ## 기능 목록
 
 
@@ -165,4 +145,26 @@ discount 목록과 gift 목록을 관리하는 객체
 - [x] "<총혜택 금액>"
 - [x] "<할인 후 예상 결제 금액>"
 - [x] "<12월 이벤트 배지>"
+
+
+
+
+
+## Class Diagram
+
+### 전체 구조
+
+![image-20231114222302664](./images/image-20231114222302664.png)
+
+
+
+### Order 구조
+
+<img src="./images/image-20231114222434918.png" alt="image-20231114222434918" style="zoom:50%;" />
+
+
+
+### Benefit 구조
+
+![image-20231114222522636](./images/image-20231114222522636.png)
 
