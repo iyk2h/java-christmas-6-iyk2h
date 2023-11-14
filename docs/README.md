@@ -1,6 +1,20 @@
 ## Class Diagram
 
-![image-20231113204513548](./images/image-20231113204513548.png)
+### 전체 구조
+
+![image-20231114222302664](./images/image-20231114222302664.png)
+
+
+
+### Order 구조
+
+<img src="./images/image-20231114222434918.png" alt="image-20231114222434918" style="zoom:50%;" />
+
+
+
+### Benefit 구조
+
+![image-20231114222522636](./images/image-20231114222522636.png)
 
 
 

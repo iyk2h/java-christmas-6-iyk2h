@@ -14,7 +14,6 @@ import java.util.Map;
 
 public class Benefit {
 
-
     private final Order order;
     private final List<DiscountInfo> discountInfos;
     private final List<GiftInfo> giftInfos;
