@@ -12,7 +12,7 @@ public class DiscountCalculator {
         this.discountInfos = discountInfos;
     }
 
-    public Map<String, Integer> calculateDiscountInfo() {
+    public Map<String, Integer> getDiscountInfo() {
         Map<String, Integer> discountInfo = new LinkedHashMap<>();
         for (DiscountInfo discount : discountInfos) {
             discountInfo.put(discount.getDiscountName(), discount.getDiscountAmount());
@@ -20,7 +20,7 @@ public class DiscountCalculator {
         return discountInfo;
     }
 
-    public int calculateTotalDiscount() {
+    public int getTotalDiscount() {
         return discountInfos.stream().mapToInt(DiscountInfo::getDiscountAmount).sum();
     }
 

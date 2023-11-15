@@ -33,23 +33,23 @@ public class Benefit {
         GiftCalculator giftCalculator = new GiftCalculator(giftInfos);
 
         Map<String, Integer> benefitInfo = new LinkedHashMap<>();
-        benefitInfo.putAll(discountCalculator.calculateDiscountInfo());
-        benefitInfo.putAll(giftCalculator.calculateGiftInfo());
+        benefitInfo.putAll(discountCalculator.getDiscountInfo());
+        benefitInfo.putAll(giftCalculator.getGiftInfo());
 
         return Collections.unmodifiableMap(benefitInfo);
     }
 
     public int getAfterDiscount() {
         DiscountCalculator discountCalculator = new DiscountCalculator(discountInfos);
-        return order.getTotalPrice() - discountCalculator.calculateTotalDiscount();
+        return order.getTotalPrice() - discountCalculator.getTotalDiscount();
     }
 
     public int getTotalBenefitPrice() {
         DiscountCalculator discountCalculator = new DiscountCalculator(discountInfos);
         GiftCalculator giftCalculator = new GiftCalculator(giftInfos);
 
-        return discountCalculator.calculateTotalDiscount()
-                + giftCalculator.calculateTotalGiftAmount();
+        return discountCalculator.getTotalDiscount()
+                + giftCalculator.getTotalGiftAmount();
     }
 
 }

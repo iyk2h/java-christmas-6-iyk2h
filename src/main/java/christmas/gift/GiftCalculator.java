@@ -14,15 +14,15 @@ public class GiftCalculator {
         this.giftInfos = giftInfos;
     }
 
-    public Map<String, Integer> calculateGiftInfo() {
+    public Map<String, Integer> getGiftInfo() {
         Map<String, Integer> giftInfo = new LinkedHashMap<>();
         if (!giftInfos.isEmpty()) {
-            giftInfo.put(GIFT_EVENT_NAME, calculateTotalGiftAmount());
+            giftInfo.put(GIFT_EVENT_NAME, getTotalGiftAmount());
         }
         return giftInfo;
     }
 
-    public int calculateTotalGiftAmount() {
+    public int getTotalGiftAmount() {
         return giftInfos.stream().mapToInt(GiftInfo::getMenuPrice).sum();
     }
 
