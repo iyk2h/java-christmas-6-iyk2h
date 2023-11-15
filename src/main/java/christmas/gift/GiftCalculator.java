@@ -6,6 +6,8 @@ import java.util.Map;
 
 public class GiftCalculator {
 
+    private static final String GIFT_EVENT_NAME = "증정 이벤트";
+
     private final List<GiftInfo> giftInfos;
 
     public GiftCalculator(List<GiftInfo> giftInfos) {
@@ -15,7 +17,7 @@ public class GiftCalculator {
     public Map<String, Integer> calculateGiftInfo() {
         Map<String, Integer> giftInfo = new LinkedHashMap<>();
         if (!giftInfos.isEmpty()) {
-            giftInfo.put("증정 이벤트", calculateTotalGiftAmount());
+            giftInfo.put(GIFT_EVENT_NAME, calculateTotalGiftAmount());
         }
         return giftInfo;
     }

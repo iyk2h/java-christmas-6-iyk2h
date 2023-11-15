@@ -15,6 +15,11 @@ public class DiscountFactory {
     private static final int WEEKEND_DISCOUNT_PER_MAIN = 2_023;
     private static final int SPECIAL_DAY_DISCOUNT = 1_000;
 
+    private static final String CHRISTMAS_DD_DISCOUNT_NAME = "크리스마스 디데이 할인";
+    private static final String WEEKEND_DISCOUNT_NAME = "주말 할인";
+    private static final String WEEKDAY_DISCOUNT_NAME = "평일 할인";
+    private static final String SPECIAL_DAY_DISCOUNT_NAME = "특별 할인";
+
     private final Order order;
     private final List<DiscountInfo> discountInfos;
 
@@ -39,7 +44,7 @@ public class DiscountFactory {
     private void applyChristmasDDayDiscount() {
         if (this.order.isDayLaterOrEqual(CHRISTMAS_DDAY_DISCOUNT_LAST_DAY)) {
             discountInfos.add(
-                    new DiscountInfo("크리스마스 디데이 할인",
+                    new DiscountInfo(CHRISTMAS_DD_DISCOUNT_NAME,
                             CHRISTMAS_DDAY_DISCOUNT_BASE
                                     + (CHRISTMAS_DDAY_DISCOUNT_PER_DAY * this.order.getDay())));
         }
@@ -48,18 +53,18 @@ public class DiscountFactory {
     private void applyWeekDiscount() {
         List<Integer> weekEnd = List.of(1, 2, 8, 9, 15, 16, 22, 23, 29, 30);
         if (weekEnd.contains(this.order.getDay())) {
-            discountInfos.add(new DiscountInfo("주말 할인",
+            discountInfos.add(new DiscountInfo(WEEKEND_DISCOUNT_NAME,
                     this.order.getCountOfCategory(Category.MAIN) * WEEKEND_DISCOUNT_PER_MAIN));
             return;
         }
-        discountInfos.add(new DiscountInfo("평일 할인",
+        discountInfos.add(new DiscountInfo(WEEKDAY_DISCOUNT_NAME,
                 this.order.getCountOfCategory(Category.DESSERT) * WEEKEND_DISCOUNT_PER_MAIN));
     }
 
     private void applySpecialDayDiscount() {
         List<Integer> specialDay = List.of(3, 10, 17, 14, 15, 31);
         if (specialDay.contains(this.order.getDay())) {
-            discountInfos.add(new DiscountInfo("특별 할인", SPECIAL_DAY_DISCOUNT));
+            discountInfos.add(new DiscountInfo(SPECIAL_DAY_DISCOUNT_NAME, SPECIAL_DAY_DISCOUNT));
         }
     }
 
