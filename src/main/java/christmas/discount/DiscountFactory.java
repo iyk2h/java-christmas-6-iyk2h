@@ -20,6 +20,8 @@ public class DiscountFactory {
     private static final String WEEKDAY_DISCOUNT_NAME = "평일 할인";
     private static final String SPECIAL_DAY_DISCOUNT_NAME = "특별 할인";
 
+    private static final List<Integer> WEEKEND_DAYS = List.of(1, 2, 8, 9, 15, 16, 22, 23, 29, 30);
+
     private final Order order;
     private final List<DiscountInfo> discountInfos;
 
@@ -36,7 +38,8 @@ public class DiscountFactory {
     private void applyGetDiscount() {
         if (this.order.getTotalPrice() >= DISCOUNT_BASE_MIN_PRICE) {
             applyChristmasDDayDiscount();
-            applyWeekDiscount();
+            applyWeekEndDiscount();
+            applyWeekDaysDiscount();
             applySpecialDayDiscount();
         }
     }
@@ -50,15 +53,18 @@ public class DiscountFactory {
         }
     }
 
-    private void applyWeekDiscount() {
-        List<Integer> weekEnd = List.of(1, 2, 8, 9, 15, 16, 22, 23, 29, 30);
-        if (weekEnd.contains(this.order.getDay())) {
+    private void applyWeekEndDiscount() {
+        if (WEEKEND_DAYS.contains(this.order.getDay())) {
             discountInfos.add(new DiscountInfo(WEEKEND_DISCOUNT_NAME,
                     this.order.getCountOfCategory(Category.MAIN) * WEEKEND_DISCOUNT_PER_MAIN));
-            return;
         }
-        discountInfos.add(new DiscountInfo(WEEKDAY_DISCOUNT_NAME,
-                this.order.getCountOfCategory(Category.DESSERT) * WEEKEND_DISCOUNT_PER_MAIN));
+    }
+
+    private void applyWeekDaysDiscount() {
+        if (!WEEKEND_DAYS.contains(this.order.getDay())) {
+            discountInfos.add(new DiscountInfo(WEEKDAY_DISCOUNT_NAME,
+                    this.order.getCountOfCategory(Category.DESSERT) * WEEKEND_DISCOUNT_PER_MAIN));
+        }
     }
 
     private void applySpecialDayDiscount() {
