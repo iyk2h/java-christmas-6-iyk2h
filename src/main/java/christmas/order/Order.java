@@ -44,7 +44,7 @@ public class Order {
 
     private void checkBasketSize(Basket basket) {
         int totalCount = basket.getTotalCount();
-        if (totalCount < MIN_BASKET_SIZE || totalCount >= MAX_BASKET_SIZE) {
+        if (totalCount < MIN_BASKET_SIZE || totalCount > MAX_BASKET_SIZE) {
             throw ExceptionManager.ERROR_WRONG_ORDER.get();
         }
     }
