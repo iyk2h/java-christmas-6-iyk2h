@@ -4,7 +4,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import christmas.basket.Basket;
-import christmas.basket.BasketItem;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -35,4 +34,5 @@ class OrderTest {
         Order order = new Order(new Day(1), new Basket(List.of("양송이수프-1", "티본스테이크-1")));
         assertThat(order.getTotalPrice()).isEqualTo(61_000);
     }
+
 }

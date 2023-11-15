@@ -15,4 +15,5 @@ class BadgeTest {
     void normal_test(int price, String name) {
         assertThat(Badge.getBadgeByPrice(price).getName()).isEqualTo(name);
     }
+
 }

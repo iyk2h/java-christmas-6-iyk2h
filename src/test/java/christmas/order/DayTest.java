@@ -19,4 +19,5 @@ class DayTest {
         assertThatThrownBy(() -> new Day(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
 }

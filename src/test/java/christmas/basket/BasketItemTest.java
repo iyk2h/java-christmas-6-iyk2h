@@ -21,4 +21,5 @@ class BasketItemTest {
         assertThatThrownBy(() -> new BasketItem(name, count))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
 }

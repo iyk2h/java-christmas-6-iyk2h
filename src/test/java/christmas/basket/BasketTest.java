@@ -60,4 +60,5 @@ class BasketTest {
         Basket basket = new Basket(List.of("양송이수프-16", "티본스테이크-4"));
         assertThat(basket.getMenuNameAndCount().size()).isEqualTo(2);
     }
+
 }

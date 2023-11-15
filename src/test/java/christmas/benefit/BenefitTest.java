@@ -24,4 +24,5 @@ class BenefitTest {
                 () -> assertThat(benefit.getTotalBenefitPrice()).isEqualTo(31246)
         );
     }
+
 }
