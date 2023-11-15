@@ -11,7 +11,6 @@ public class DiscountFactory {
     private static final int DISCOUNT_BASE_MIN_PRICE = 10_000;
     private static final int CHRISTMAS_DDAY_DISCOUNT_BASE = 900;
     private static final int CHRISTMAS_DDAY_DISCOUNT_PER_DAY = 100;
-    private static final int CHRISTMAS_DDAY_DISCOUNT_LAST_DAY = 25;
     private static final int WEEKEND_DISCOUNT_PER_MAIN = 2_023;
     private static final int SPECIAL_DAY_DISCOUNT = 1_000;
 
@@ -20,7 +19,9 @@ public class DiscountFactory {
     private static final String WEEKDAY_DISCOUNT_NAME = "평일 할인";
     private static final String SPECIAL_DAY_DISCOUNT_NAME = "특별 할인";
 
-    private static final List<Integer> WEEKEND_DAYS = List.of(1, 2, 8, 9, 15, 16, 22, 23, 29, 30);
+    private static final int CHRISTMAS_DDAY_DISCOUNT_LAST_DAY = 25;
+    private static final List<Integer> WEEKEND_DISCOUNT_DAYS = List.of(1, 2, 8, 9, 15, 16, 22, 23, 29, 30);
+    private static final List<Integer> SPECIAL_DISCOUNT_DAYS = List.of(3, 10, 17, 24, 25, 31);
 
     private final Order order;
     private final List<DiscountInfo> discountInfos;
@@ -54,22 +55,21 @@ public class DiscountFactory {
     }
 
     private void applyWeekEndDiscount() {
-        if (WEEKEND_DAYS.contains(this.order.getDay())) {
+        if (WEEKEND_DISCOUNT_DAYS.contains(this.order.getDay())) {
             discountInfos.add(new DiscountInfo(WEEKEND_DISCOUNT_NAME,
                     this.order.getCountOfCategory(Category.MAIN) * WEEKEND_DISCOUNT_PER_MAIN));
         }
     }
 
     private void applyWeekDaysDiscount() {
-        if (!WEEKEND_DAYS.contains(this.order.getDay())) {
+        if (!WEEKEND_DISCOUNT_DAYS.contains(this.order.getDay())) {
             discountInfos.add(new DiscountInfo(WEEKDAY_DISCOUNT_NAME,
                     this.order.getCountOfCategory(Category.DESSERT) * WEEKEND_DISCOUNT_PER_MAIN));
         }
     }
 
     private void applySpecialDayDiscount() {
-        List<Integer> specialDay = List.of(3, 10, 17, 14, 15, 31);
-        if (specialDay.contains(this.order.getDay())) {
+        if (SPECIAL_DISCOUNT_DAYS.contains(this.order.getDay())) {
             discountInfos.add(new DiscountInfo(SPECIAL_DAY_DISCOUNT_NAME, SPECIAL_DAY_DISCOUNT));
         }
     }
