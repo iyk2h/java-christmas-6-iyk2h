@@ -30,6 +30,12 @@ class OrderTest {
     }
 
     @Test
+    void orderOf20Menu() {
+        Order order = new Order(new Day(1), new Basket(List.of("양송이수프-1", "티본스테이크-19")));
+        assertThat(order.getOrderMenuAndCount().size()).isEqualTo(20);
+    }
+
+    @Test
     void getTotalPrice() {
         Order order = new Order(new Day(1), new Basket(List.of("양송이수프-1", "티본스테이크-1")));
         assertThat(order.getTotalPrice()).isEqualTo(61_000);
