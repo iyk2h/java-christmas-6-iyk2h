@@ -44,6 +44,10 @@ public enum Menu {
                 .orElseThrow(ExceptionManager.ERROR_WRONG_ORDER::get);
     }
 
+    private boolean isEqualsName(String name) {
+        return this.name.equals(name);
+    }
+
     public String getName() {
         return name;
     }
@@ -56,7 +60,4 @@ public enum Menu {
         return this.category.equals(category);
     }
 
-    private boolean isEqualsName(String name) {
-        return this.name.equals(name);
-    }
 }
